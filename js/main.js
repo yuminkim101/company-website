@@ -36,7 +36,7 @@ class SiteFooter extends HTMLElement {
     this.innerHTML = `
       <footer class="site-footer">
         <div class="container stack">
-          <p class="footer-name">클래스로(Classro)</p>
+          <p class="footer-name">클래스로!(Classro)</p>
           <p>이 사이트는 수업용 가상 회사 설정으로 만든 예시 홈페이지입니다. 등장하는 회사·인물·수치는 실제와 무관합니다.</p>
         </div>
       </footer>`;
