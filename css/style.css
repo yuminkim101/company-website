@@ -12,7 +12,7 @@
   font-weight: 500;
   font-style: normal;
   font-display: swap;
-  src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/woff2/Pretendard-Medium.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/packages/pretendard/dist/web/static/woff2/Pretendard-Medium.woff2") format("woff2");
 }
 
 @font-face {
@@ -20,7 +20,7 @@
   font-weight: 700;
   font-style: normal;
   font-display: swap;
-  src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/woff2/Pretendard-Bold.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/packages/pretendard/dist/web/static/woff2/Pretendard-Bold.woff2") format("woff2");
 }
 
 /* 2. 디자인 토큰
@@ -517,6 +517,95 @@ site-footer {
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
   color: var(--color-bg);
+}
+
+/* 6-2. 페이지 공통 장식 — 섹션 머리글, 어두운 띠 섹션, 구분선 목록
+   -------------------------------------------------------------------------- */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-primary-strong);
+}
+
+.eyebrow::before {
+  content: "";
+  width: var(--space-6);
+  height: 1px;
+  background-color: currentColor;
+}
+
+/* 머리글 바로 아래 제목은 자간을 살짝 좁혀 단정하게 */
+.eyebrow + h1,
+.eyebrow + h2 {
+  letter-spacing: -0.02em;
+}
+
+.section-dark {
+  color: var(--color-bg);
+  background-color: var(--color-text);
+}
+
+.section-dark .eyebrow {
+  color: var(--color-primary-soft);
+}
+
+/* 스크롤하면 아래에서 부드럽게 떠오르는 효과 — 지원하지 않거나 움직임 줄이기 설정이면 그냥 보인다 */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(var(--space-6));
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 45%;
+    }
+  }
+}
+
+.fact-list {
+  align-self: end;
+}
+
+.fact-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-4);
+  padding-block: var(--space-4);
+  border-top: 1px solid var(--color-border-strong);
+}
+
+.fact-row:last-child {
+  border-bottom: 1px solid var(--color-border-strong);
+}
+
+.fact-term {
+  color: var(--color-text-muted);
+}
+
+.section-dark .section-lead,
+.section-dark .fact-term {
+  color: var(--color-border);
+}
+
+.fact-desc {
+  font-weight: var(--font-weight-bold);
 }
 
 /* 7. 움직임 줄이기 설정 존중

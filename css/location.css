@@ -39,7 +39,9 @@
   display: none;
 }
 
-/* 주소·교통편 — 카드는 공통 .card, 열 수는 .auto-grid가 처리 */
-.info-list {
-  margin: 0;
+/* 제목 — 회사 소개 히어로와 같은 크기 */
+.location-title {
+  font-size: calc(var(--font-size-h1) * 1.25);
+  line-height: 1.2;
+  letter-spacing: -0.03em;
 }

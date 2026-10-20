@@ -11,7 +11,6 @@
   <script defer src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=i7xerh0otr&amp;submodules=geocoder"></script>
   <script src="js/main.js" defer></script>
   <script defer src="js/location.js"></script>
-  <script src="js/main.js" defer></script>
 </head>
 <body>
   <site-header data-current="location"></site-header>
@@ -19,7 +18,8 @@
   <main>
     <section class="section">
       <div class="container stack">
-        <h1 class="section-title">오시는 길</h1>
+        <p class="eyebrow">LOCATION</p>
+        <h1 class="location-title">오시는 길</h1>
         <p class="section-lead">클래스로의 위치를 지도에서 확인하세요.</p>
 
         <div class="map-box" data-map role="region" aria-label="클래스로 위치 지도">
@@ -33,28 +33,29 @@
       </div>
     </section>
 
-    <section class="section section-alt">
+    <section class="section section-alt" aria-labelledby="route-title">
       <div class="container stack">
-        <h2 class="section-title">주소·교통편</h2>
+        <p class="eyebrow">ACCESS</p>
+        <h2 class="section-title" id="route-title">주소·교통편</h2>
         <!-- TODO: 확인 필요 — 주소·지하철·버스는 팀 요청으로 입력한 내용(00_회사소개.md에 없음). 주차는 확정 전까지 자리표시자로 둔다 -->
-        <ul class="auto-grid info-list">
-          <li class="card">
-            <h3 class="card-title">주소</h3>
-            <p class="card-text">서울특별시 송파구 올림픽로 300</p>
-          </li>
-          <li class="card">
-            <h3 class="card-title">지하철</h3>
-            <p class="card-text">잠실역 2호선, 8호선</p>
-          </li>
-          <li class="card">
-            <h3 class="card-title">버스</h3>
-            <p class="card-text">잠실역 1번, 11번 정류장에서 하차</p>
-          </li>
-          <li class="card">
-            <h3 class="card-title">주차</h3>
-            <p class="card-text"><span class="placeholder-text">[주차 안내 확인 필요]</span></p>
-          </li>
-        </ul>
+        <dl class="fact-list reveal">
+          <div class="fact-row">
+            <dt class="fact-term">주소</dt>
+            <dd class="fact-desc">서울특별시 송파구 올림픽로 300</dd>
+          </div>
+          <div class="fact-row">
+            <dt class="fact-term">지하철</dt>
+            <dd class="fact-desc">잠실역 2호선, 8호선</dd>
+          </div>
+          <div class="fact-row">
+            <dt class="fact-term">버스</dt>
+            <dd class="fact-desc">잠실역 1번, 11번 정류장에서 하차</dd>
+          </div>
+          <div class="fact-row">
+            <dt class="fact-term">주차</dt>
+            <dd class="fact-desc"><span class="placeholder-text">[주차 안내 확인 필요]</span></dd>
+          </div>
+        </dl>
       </div>
     </section>
   </main>
