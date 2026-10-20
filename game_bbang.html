@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>빵 만들기 미니게임 | 클래스로</title>
+  <meta name="description" content="재료를 모으고 반죽을 치대어 오븐에 구워 보는 빵 만들기 미니게임입니다.">
+  <link rel="stylesheet" href="css/game.css">
+  <script src="js/game.js" defer></script>
+</head>
+<body>
+  <main class="game">
+    <h1 class="game-title">빵 만들기</h1>
+    <p class="game-status" data-status aria-live="polite">먼저 밀가루를 눌러 작업대에 쏟아 주세요.</p>
+
+    <div class="kitchen">
+      <ul class="shelf" aria-label="재료 선반 (왼쪽)">
+        <li>
+          <button class="ingredient" type="button" data-ingredient="flour">
+            <span class="ingredient-icon" aria-hidden="true">🌾</span>
+            <span class="ingredient-name">밀가루</span>
+          </button>
+        </li>
+        <li>
+          <button class="ingredient" type="button" data-ingredient="egg" disabled>
+            <span class="ingredient-icon" aria-hidden="true">🥚</span>
+            <span class="ingredient-name">계란</span>
+          </button>
+        </li>
+      </ul>
+
+      <div class="center-area">
+        <div class="workbench" data-workbench aria-label="작업대">
+          <div class="flour-mound" data-flour-mound aria-hidden="true" hidden>
+            <span class="flour-well" data-flour-well hidden></span>
+            <span class="well-item well-milk" data-well-item="milk" hidden></span>
+            <span class="well-item well-egg" data-well-item="egg" hidden><span class="egg-yolk"></span></span>
+            <span class="well-item well-butter" data-well-item="butter" hidden></span>
+          </div>
+          <span class="fist fist-left" data-fist="left" aria-hidden="true" hidden>🤜</span>
+          <span class="fist fist-right" data-fist="right" aria-hidden="true" hidden>🤛</span>
+          <button class="dough" type="button" data-dough hidden>
+            <span class="visually-hidden">반죽 치대기</span>
+          </button>
+        </div>
+
+        <div class="controls">
+          <button class="action-button" type="button" data-knead-button hidden>반죽하기</button>
+          <p class="knead-count" data-knead-count hidden>0 / 10</p>
+        </div>
+
+        <div class="oven" data-oven aria-label="오븐">
+          <div class="oven-top" aria-hidden="true">
+            <span class="oven-knob"></span>
+            <span class="oven-knob"></span>
+          </div>
+          <div class="oven-window" data-oven-window>
+            <span class="oven-content" data-oven-content></span>
+          </div>
+          <progress class="bake-progress" data-bake-progress max="100" value="0" aria-label="굽기 진행률" hidden></progress>
+        </div>
+
+      </div>
+
+      <ul class="shelf" aria-label="재료 선반 (오른쪽)">
+        <li>
+          <button class="ingredient" type="button" data-ingredient="butter" disabled>
+            <span class="ingredient-icon" aria-hidden="true">🧈</span>
+            <span class="ingredient-name">버터</span>
+          </button>
+        </li>
+        <li>
+          <button class="ingredient" type="button" data-ingredient="milk" disabled>
+            <span class="ingredient-icon" aria-hidden="true">🥛</span>
+            <span class="ingredient-name">우유</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div class="result" data-result hidden>
+      <div class="result-stage">
+        <div class="steam" aria-hidden="true">
+          <svg class="steam-wisp" viewBox="0 0 20 60"><path d="M10 58C3 48 17 40 10 30C3 20 17 12 10 2"/></svg>
+          <svg class="steam-wisp" viewBox="0 0 20 60"><path d="M10 58C3 48 17 40 10 30C3 20 17 12 10 2"/></svg>
+          <svg class="steam-wisp" viewBox="0 0 20 60"><path d="M10 58C3 48 17 40 10 30C3 20 17 12 10 2"/></svg>
+        </div>
+        <svg class="result-bread" data-result-bread viewBox="0 0 64 64" role="img" aria-label="갓 구운 식빵">
+          <path d="M12 30C6 30 4 22 8 16C12 9 22 8 32 8C42 8 52 9 56 16C60 22 58 30 52 30V54Q52 58 48 58H16Q12 58 12 54Z" fill="#c47a35"/>
+          <path d="M16.5 31.5C12 31 10.5 25 13 20.5C16 15.5 24 12.5 32 12.5C40 12.5 48 15.5 51 20.5C53.5 25 52 31 47.5 31.5V52Q47.5 54 45.5 54H18.5Q16.5 54 16.5 52Z" fill="#f8e3b8"/>
+          <g fill="#e8c88a">
+            <ellipse cx="24" cy="26" rx="1.6" ry="1"/>
+            <ellipse cx="38" cy="22" rx="1.4" ry="0.9"/>
+            <ellipse cx="30" cy="37" rx="1.6" ry="1"/>
+            <ellipse cx="41" cy="43" rx="1.3" ry="0.9"/>
+            <ellipse cx="23" cy="46" rx="1.2" ry="0.8"/>
+          </g>
+          <path d="M21 10.8C25 10.1 28.5 9.9 32 9.9" stroke="#e3a465" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <div class="result-actions">
+        <p class="result-text">빵이 완성됐어요!</p>
+        <button class="action-button" type="button" data-restart>다시 만들기</button>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
