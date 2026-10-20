@@ -1,0 +1,140 @@
+/* ==========================================================================
+   서비스 소개 페이지 전용 스타일 (service.html)
+   ========================================================================== */
+
+/* 헤더·푸터 — TODO: 확인 필요
+   공통 헤더·푸터 스타일 위치가 정해지지 않아 임시로 여기에 둔다.
+   위치가 정해지면 그쪽으로 옮기고 이 블록은 지운다.
+   -------------------------------------------------------------------------- */
+.site-header {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-5);
+  padding-block: var(--space-2);
+}
+
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+}
+
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  color: var(--color-primary-strong);
+}
+
+.site-nav a[aria-current="page"] {
+  font-weight: var(--font-weight-bold);
+  text-decoration: underline;
+  text-underline-offset: 0.35em;
+}
+
+.site-footer {
+  padding-block: var(--space-6);
+  color: var(--color-text-muted);
+  background-color: var(--color-surface-alt);
+  border-top: 1px solid var(--color-border);
+}
+
+.site-footer-name {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+}
+
+.site-footer-note {
+  font-size: var(--font-size-sm);
+}
+
+/* 히어로
+   -------------------------------------------------------------------------- */
+.service-hero h1 {
+  max-width: 20ch;
+}
+
+/* 클래스 카테고리
+   -------------------------------------------------------------------------- */
+.category-list {
+  --grid-min: 9rem;
+}
+
+.category-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 6rem;
+  text-align: center;
+}
+
+.category-name {
+  font-size: var(--font-size-lg);
+}
+
+/* 예약 흐름 — 번호가 붙은 단계
+   -------------------------------------------------------------------------- */
+.flow-list {
+  --grid-min: 11rem;
+  counter-reset: flow;
+}
+
+.flow-step {
+  counter-increment: flow;
+  padding: var(--space-5);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.flow-step::before {
+  content: counter(flow);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: var(--space-3);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-on-primary);
+  background-color: var(--color-primary);
+  border-radius: var(--radius-pill);
+}
+
+.flow-title {
+  margin-bottom: var(--space-1);
+  font-size: var(--font-size-lg);
+}
+
+.flow-text {
+  color: var(--color-text-muted);
+}
+
+/* 이용 환경
+   -------------------------------------------------------------------------- */
+.platform-list {
+  --grid-min: 14rem;
+}
