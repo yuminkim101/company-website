@@ -513,6 +513,11 @@ site-footer {
   background-color: var(--color-text);
 }
 
+/* 전역 p의 max-width(68ch) 때문에 안내 문구가 중간에 줄바꿈되지 않도록 푸터에서는 해제 */
+.site-footer p {
+  max-width: none;
+}
+
 .footer-name {
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
