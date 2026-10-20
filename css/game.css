@@ -81,6 +81,11 @@
   box-sizing: border-box;
 }
 
+html {
+  min-height: 100%;
+}
+
+/* 배경 그림은 페이지 전체 높이를 채우고, 내용이 화면보다 길면 함께 스크롤된다. */
 body {
   display: flex;
   align-items: center;
@@ -90,15 +95,6 @@ body {
   font-family: var(--font-base);
   font-size: var(--font-size-md);
   color: var(--color-text);
-  background: var(--color-bg);
-}
-
-/* 게임 화면 전체를 채우는 배경 그림 (스크롤과 관계없이 고정) */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
   background: var(--color-bg) var(--image-background) center / cover no-repeat;
 }
 
