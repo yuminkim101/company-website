@@ -1,70 +1,4 @@
-/* 오시는 길 페이지 전용 스타일
-   - 헤더·푸터(site-*)는 공통 스타일 위치가 정해지기 전까지 임시로 여기에 둔다. */
-
-/* 임시 헤더·푸터 */
-.site-header {
-  background: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
-}
-
-.site-header-inner {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-2) var(--space-5);
-  padding-block: var(--space-3);
-}
-
-.site-logo {
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-lg);
-  color: var(--color-primary-strong);
-  text-decoration: none;
-}
-
-.site-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-1) var(--space-4);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.site-nav a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  color: var(--color-text);
-  text-decoration: none;
-}
-
-.site-nav a:hover {
-  color: var(--color-primary-strong);
-}
-
-.site-nav a[aria-current="page"] {
-  color: var(--color-primary-strong);
-  font-weight: var(--font-weight-bold);
-  border-bottom: 2px solid var(--color-primary);
-}
-
-.site-footer {
-  padding-block: var(--space-6);
-  color: var(--color-text-muted);
-  background-color: var(--color-surface-alt);
-  border-top: 1px solid var(--color-border);
-}
-
-.site-footer-name {
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text);
-}
-
-.site-footer-note {
-  font-size: var(--font-size-sm);
-}
+/* 오시는 길 페이지 전용 스타일 (헤더·푸터는 js/main.js와 css/style.css의 공통 컴포넌트) */
 
 /* 지도 */
 .map-box {
@@ -87,6 +21,18 @@
   padding: var(--space-4);
   text-align: center;
   color: var(--color-text-muted);
+}
+
+/* 지도 위에 얹는 안내 (지도 로딩 뒤) */
+.map-message-notice {
+  inset: auto var(--space-3) var(--space-3) var(--space-3);
+  z-index: 1;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
 }
 
 .map-message[hidden] {
