@@ -7,7 +7,7 @@
 .hero {
   --motion-slow: 0.9s;
   --motion-step: 0.12s;
-  --float-duration: 6s;
+  --belt-duration: 20s;
 
   padding-block: var(--space-section);
   overflow: hidden;
@@ -47,39 +47,40 @@
   gap: var(--space-3) var(--space-4);
 }
 
-/* 히어로 장식: 아치 모양 안에 클래스 일러스트 */
+/* 히어로 장식: 아치 안에서 원이 세로 띠처럼 돌아간다 */
 .hero-art {
   flex: 1 1 16rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  align-content: end;
   gap: var(--space-4);
   max-width: 24rem;
-  min-height: 24rem;
+  height: 30rem;
   margin-inline: auto;
-  padding: var(--space-7) var(--space-5) var(--space-6);
+  padding-inline: var(--space-5);
+  overflow: hidden;
   background-color: var(--color-primary-soft);
   border-radius: var(--radius-pill) var(--radius-pill) var(--radius-lg) var(--radius-lg);
+}
+
+.hero-art-col {
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
 }
 
 .hero-art-item {
   display: grid;
   place-items: center;
   aspect-ratio: 1;
+  margin-bottom: var(--space-4);
   padding: var(--space-4);
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
-  transition: scale var(--transition-base), box-shadow var(--transition-base);
 }
 
-.hero-art-item:nth-child(even) {
-  translate: 0 var(--space-5);
-}
-
-.hero-art-item:hover {
-  scale: 1.08;
-  box-shadow: var(--shadow-md);
+/* 이어 붙이기용 복제본은 움직일 때만 보인다 */
+.hero-art-dup {
+  display: none;
 }
 
 /* 숫자로 보는 클래스로 */
@@ -228,22 +229,23 @@
   }
 }
 
-@keyframes float {
-  0%,
-  100% {
-    transform: translate(0, 0);
+@keyframes belt-up {
+  from {
+    transform: translateY(0);
   }
 
-  25% {
-    transform: translate(var(--space-1), calc(var(--space-3) * -1));
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes belt-down {
+  from {
+    transform: translateY(-50%);
   }
 
-  50% {
-    transform: translate(0, calc(var(--space-4) * -1));
-  }
-
-  75% {
-    transform: translate(calc(var(--space-1) * -1), calc(var(--space-2) * -1));
+  to {
+    transform: translateY(0);
   }
 }
 
@@ -269,28 +271,20 @@
     animation: rise-in var(--motion-slow) ease calc(var(--motion-step) * 2) both;
   }
 
-  /* 아치 안의 원이 제각각 천천히 떠다닌다 */
-  .hero-art-item {
-    animation: float var(--float-duration) ease-in-out infinite;
+  /* 두 줄이 서로 반대 방향으로 돌아간다. 마우스를 올리면 멈춘다 */
+  .hero-art-dup {
+    display: grid;
   }
 
-  .hero-art-item:nth-child(2) {
-    animation-delay: calc(var(--float-duration) * -0.2);
+  .hero-art-up {
+    animation: belt-up var(--belt-duration) linear infinite;
   }
 
-  .hero-art-item:nth-child(3) {
-    animation-delay: calc(var(--float-duration) * -0.4);
+  .hero-art-down {
+    animation: belt-down var(--belt-duration) linear infinite;
   }
 
-  .hero-art-item:nth-child(4) {
-    animation-delay: calc(var(--float-duration) * -0.6);
-  }
-
-  .hero-art-item:nth-child(5) {
-    animation-delay: calc(var(--float-duration) * -0.8);
-  }
-
-  .hero-art-item:nth-child(6) {
-    animation-delay: calc(var(--float-duration) * -0.1);
+  .hero-art:hover .hero-art-track {
+    animation-play-state: paused;
   }
 }
