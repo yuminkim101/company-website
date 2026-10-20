@@ -528,15 +528,22 @@ site-footer {
   margin-bottom: var(--space-4);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   color: var(--color-primary-strong);
 }
 
 .eyebrow::before {
   content: "";
-  width: var(--space-7);
-  height: 2px;
-  background-color: var(--color-primary);
+  width: var(--space-6);
+  height: 1px;
+  background-color: currentColor;
+}
+
+/* 머리글 바로 아래 제목은 자간을 살짝 좁혀 단정하게 */
+.eyebrow + h1,
+.eyebrow + h2 {
+  letter-spacing: -0.02em;
 }
 
 .section-dark {
@@ -548,8 +555,27 @@ site-footer {
   color: var(--color-primary-soft);
 }
 
-.section-dark .eyebrow::before {
-  background-color: var(--color-primary-soft);
+/* 스크롤하면 아래에서 부드럽게 떠오르는 효과 — 지원하지 않거나 움직임 줄이기 설정이면 그냥 보인다 */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(var(--space-6));
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 45%;
+    }
+  }
 }
 
 .fact-list {

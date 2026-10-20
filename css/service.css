@@ -6,8 +6,9 @@
    -------------------------------------------------------------------------- */
 .service-hero h1 {
   max-width: 20ch;
-  font-size: calc(var(--font-size-h1) * 1.2);
+  font-size: calc(var(--font-size-h1) * 1.25);
   line-height: 1.2;
+  letter-spacing: -0.03em;
 }
 
 .service-title-accent {
@@ -28,6 +29,7 @@
   gap: var(--space-2);
   min-height: 6rem;
   text-align: center;
+  box-shadow: none;
 }
 
 .category-emoji {
@@ -71,7 +73,7 @@
 .flow-step {
   counter-increment: flow;
   padding-top: var(--space-4);
-  border-top: 2px solid var(--color-text);
+  border-top: 1px solid var(--color-text);
 }
 
 .flow-step::before {
@@ -79,7 +81,7 @@
   display: block;
   margin-bottom: var(--space-1);
   font-size: var(--font-size-h2);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-regular);
   line-height: 1;
   color: var(--color-primary);
 }
@@ -114,10 +116,12 @@
 
 .platform-item {
   padding-top: var(--space-4);
-  border-top: 2px solid var(--color-text);
+  border-top: 1px solid var(--color-text);
 }
 
 .platform-name {
   font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: -0.02em;
   color: var(--color-primary-strong);
 }
