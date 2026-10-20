@@ -161,7 +161,7 @@
 | `.placeholder-text` | 문서에 없는 정보 자리표시자 (예: `[주소 확인 필요]`) |
 | `.visually-hidden` | 스크린리더 전용 텍스트 |
 
-- 헤더·푸터 스타일은 `style.css`에 없다. 위치는 팀에서 정한 뒤 이 문서에 추가한다. <!-- TODO: 헤더·푸터 스타일 파일 위치 결정 -->
+- 헤더·푸터는 `js/main.js`의 컴포넌트로 넣는다. 각 페이지 `body`에 `<site-header data-current="<페이지명>"></site-header>`와 `<site-footer></site-footer>`를 두고 `js/main.js`를 `defer`로 불러온다. 스타일은 `style.css`의 "6-1. 헤더·푸터"에 있다.
 - 페이지 전용 스타일은 `css/<페이지명>.css`에 쓰고, 공통 클래스를 덮어쓰지 말고 새 클래스를 추가한다.
 
 ## 8. 접근성
