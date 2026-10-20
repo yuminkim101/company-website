@@ -52,7 +52,7 @@
 - 공통 스타일은 `css/style.css`, 페이지 전용 스타일은 `css/<페이지명>.css`에 둔다.
 - 색상·글꼴·간격은 `:root`의 CSS 변수로 정의하고 재사용한다. 값 하드코딩을 피한다.
 - 클래스명은 소문자 kebab-case (`hero-title`, `card-list`). `id` 선택자로 스타일링하지 않는다.
-- **모바일 우선**으로 작성하고 `min-width` 미디어쿼리로 확장한다. (서비스 자체가 모바일 중심이다.)
+- **모바일 우선**으로 작성하고, 고정 브레이크포인트 대신 유동 크기(`clamp()`·`auto-fit` 그리드)와 최대 폭(`max-width`)으로 대응한다. (서비스 자체가 모바일 중심이다. 자세한 규칙은 `design-guide.md`)
 - `!important`는 쓰지 않는다.
 
 ### JavaScript
@@ -60,11 +60,13 @@
 - `const`/`let`만 쓰고 `var`는 쓰지 않는다. 변수·함수는 camelCase.
 - DOM 선택은 `data-` 속성 또는 클래스로 하고, 이벤트는 `addEventListener`로 연결한다.
 - 외부 라이브러리·CDN은 팀 합의 없이 추가하지 않는다. `console.log`는 커밋 전에 지운다.
+  - 합의 완료: Pretendard 글꼴(jsDelivr, 500·700) — `css/style.css`의 `@font-face`로 불러온다.
 
 ## 4. 파일 구조
 ```
 company-website/
 ├── CLAUDE.md
+├── design-guide.md         # 디자인 규칙 (색·글꼴·간격·반응형)
 ├── 00_회사소개.md          # 콘텐츠 출처 (수정 금지)
 ├── index.html              # 회사 소개
 ├── service.html            # 서비스 소개 (카테고리 이모지 + 미니게임)
