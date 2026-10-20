@@ -1,0 +1,319 @@
+/* 회사 소개(index.html) 전용 스타일
+   - 공통 변수·클래스는 css/style.css, 규칙은 design-guide.md
+   - 새 값은 만들지 않고 기존 변수만 조합한다. 미디어쿼리 없이 flex-wrap·auto-fit으로 반응한다.
+   - TODO: 헤더·푸터 스타일은 style.css에 없어 임시로 여기에 둔다. 위치가 정해지면 옮긴다. */
+
+/* 헤더 / 내비게이션 */
+.site-header {
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-5);
+  padding-block: var(--space-3);
+}
+
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 2.75rem;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.site-logo::before {
+  content: "";
+  width: var(--space-5);
+  height: var(--space-5);
+  background-color: var(--color-primary);
+  border-radius: var(--radius-pill) var(--radius-pill) var(--radius-sm) var(--radius-sm);
+}
+
+.site-logo:hover {
+  color: var(--color-primary-strong);
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-5);
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--color-text);
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+}
+
+.nav-link:hover {
+  color: var(--color-primary-strong);
+}
+
+.nav-link[aria-current="page"] {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-strong);
+  border-bottom-color: var(--color-primary);
+}
+
+/* 푸터 */
+.site-footer {
+  padding-block: var(--space-7);
+  font-size: var(--font-size-sm);
+  color: var(--color-border);
+  background-color: var(--color-text);
+}
+
+.footer-name {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-bg);
+}
+
+/* 공통: 섹션 위 작은 머리글 */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+  color: var(--color-primary-strong);
+}
+
+.eyebrow::before {
+  content: "";
+  width: var(--space-7);
+  height: 2px;
+  background-color: var(--color-primary);
+}
+
+/* 히어로 */
+.hero {
+  padding-block: var(--space-section);
+  overflow: hidden;
+}
+
+.hero-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-7) var(--space-8);
+}
+
+.hero-copy {
+  flex: 1 1 22rem;
+}
+
+.hero-title {
+  max-width: 14ch;
+  margin-bottom: var(--space-5);
+  font-size: calc(var(--font-size-h1) * 1.2);
+  line-height: 1.2;
+}
+
+.hero-title-accent {
+  color: var(--color-primary);
+}
+
+.hero-lead {
+  margin-bottom: var(--space-6);
+  font-size: var(--font-size-lg);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-4);
+}
+
+/* 히어로 장식: 아치 모양 안에 클래스 이모지 */
+.hero-art {
+  flex: 1 1 16rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-content: end;
+  gap: var(--space-4);
+  max-width: 24rem;
+  min-height: 24rem;
+  margin-inline: auto;
+  padding: var(--space-7) var(--space-5) var(--space-6);
+  font-size: calc(var(--font-size-h1) * 1.3);
+  line-height: 1;
+  text-align: center;
+  background-color: var(--color-primary-soft);
+  border-radius: var(--radius-pill) var(--radius-pill) var(--radius-lg) var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.hero-art-item {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+}
+
+.hero-art-item:nth-child(even) {
+  transform: translateY(var(--space-5));
+}
+
+/* 숫자로 보는 클래스로 */
+.numbers {
+  padding-block: var(--space-section);
+  color: var(--color-bg);
+  background-color: var(--color-text);
+}
+
+.numbers .eyebrow {
+  color: var(--color-primary-soft);
+}
+
+.numbers .eyebrow::before {
+  background-color: var(--color-primary-soft);
+}
+
+.numbers-title {
+  margin-bottom: var(--space-7);
+}
+
+.numbers-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-7) var(--space-8);
+}
+
+.stat-list {
+  flex: 1 1 20rem;
+  display: grid;
+  gap: var(--space-6);
+}
+
+.stat-term {
+  font-size: var(--font-size-sm);
+  color: var(--color-border);
+}
+
+.stat-value {
+  font-size: calc(var(--font-size-h1) * 1.5);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.1;
+  color: var(--color-primary-soft);
+}
+
+.stat-unit {
+  margin-left: var(--space-1);
+  font-size: var(--font-size-h3);
+}
+
+.stat-note {
+  display: block;
+  margin-top: var(--space-1);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-border);
+}
+
+.fact-list {
+  flex: 1 1 20rem;
+  align-self: end;
+}
+
+.fact-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-4);
+  padding-block: var(--space-4);
+  border-top: 1px solid var(--color-border-strong);
+}
+
+.fact-row:last-child {
+  border-bottom: 1px solid var(--color-border-strong);
+}
+
+.fact-term {
+  color: var(--color-border);
+}
+
+.fact-desc {
+  font-weight: var(--font-weight-bold);
+}
+
+/* 서비스 둘러보기 */
+.shortcut {
+  padding-block: var(--space-section);
+}
+
+.shortcut-head {
+  max-width: var(--max-width-text);
+  margin-bottom: var(--space-7);
+}
+
+.shortcut-head .section-title {
+  margin-bottom: var(--space-4);
+}
+
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-7);
+}
+
+.category-item {
+  padding: var(--space-2) var(--space-5);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-strong);
+  background-color: var(--color-primary-soft);
+  border-radius: var(--radius-pill);
+}
+
+.flow-list {
+  --grid-min: 11rem;
+  counter-reset: flow;
+  margin-bottom: var(--space-7);
+}
+
+.flow-item {
+  position: relative;
+  padding-top: var(--space-4);
+  font-weight: var(--font-weight-bold);
+  border-top: 2px solid var(--color-text);
+}
+
+.flow-item::before {
+  counter-increment: flow;
+  content: "0" counter(flow);
+  display: block;
+  margin-bottom: var(--space-1);
+  font-size: var(--font-size-h2);
+  line-height: 1;
+  color: var(--color-primary);
+}
+
+.flow-sub {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-muted);
+}
+
+.shortcut-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-4);
+}
