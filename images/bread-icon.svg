@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="식빵">
+  <path d="M12 30C6 30 4 22 8 16C12 9 22 8 32 8C42 8 52 9 56 16C60 22 58 30 52 30V54Q52 58 48 58H16Q12 58 12 54Z" fill="#c47a35"/>
+  <path d="M16.5 31.5C12 31 10.5 25 13 20.5C16 15.5 24 12.5 32 12.5C40 12.5 48 15.5 51 20.5C53.5 25 52 31 47.5 31.5V52Q47.5 54 45.5 54H18.5Q16.5 54 16.5 52Z" fill="#f8e3b8"/>
+  <g fill="#e8c88a">
+    <ellipse cx="24" cy="26" rx="1.6" ry="1"/>
+    <ellipse cx="38" cy="22" rx="1.4" ry="0.9"/>
+    <ellipse cx="30" cy="37" rx="1.6" ry="1"/>
+    <ellipse cx="41" cy="43" rx="1.3" ry="0.9"/>
+    <ellipse cx="23" cy="46" rx="1.2" ry="0.8"/>
+  </g>
+  <path d="M21 10.8C25 10.1 28.5 9.9 32 9.9" stroke="#e3a465" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+</svg>

@@ -1,0 +1,704 @@
+:root {
+  --color-bg: #fdf6ec;
+  --color-text: #3b2a1e;
+  --color-muted: #7a6150;
+  --color-primary: #c8642c;
+  --color-primary-dark: #9e4a1c;
+  --color-on-primary: #ffffff;
+  --color-shelf: #e8d3b9;
+  --color-shelf-edge: #b8946c;
+  --color-card: #fffaf3;
+  --color-wood: #c99a66;
+  --color-wood-dark: #a77845;
+  --color-dough: #f3dfb8;
+  --color-dough-shadow: #d9bb86;
+  --color-oven: #4a4a52;
+  --color-oven-dark: #2f2f35;
+  --color-oven-window: #1f1a17;
+  --color-oven-glow: #ff9d3c;
+  --color-focus: #2f6fdb;
+
+  --color-flour: #fbfaf6;
+  --color-flour-light: #ffffff;
+  --color-flour-shadow: #e2dbcc;
+  --color-well: #ece5d6;
+  --color-kraft: #d8b88a;
+  --color-kraft-dark: #b8935f;
+  --color-egg-shell: #f0d9bb;
+  --color-egg-shell-light: #fff6ea;
+  --color-egg-white: #fdfcf6;
+  --color-yolk: #f5ac12;
+  --color-yolk-light: #ffd970;
+  --color-butter: #f6dc78;
+  --color-butter-light: #fdf0b4;
+  --color-butter-dark: #dcbc4f;
+  --color-milk: #ffffff;
+  --color-milk-pool: #e3ecf8;
+  --color-glass: #c9dbe8;
+  --color-glass-tint: #eef5fa;
+  --shadow-soft: rgba(80, 60, 30, 0.22);
+  --color-overlay: rgba(43, 28, 18, 0.62);
+  --color-label-bg: rgba(255, 250, 243, 0.88);
+  --image-background: url("../images/game-background.jpg");
+  --color-steam: rgba(255, 255, 255, 0.85);
+  --shadow-bread: rgba(0, 0, 0, 0.35);
+  --result-size: 40vmin;
+
+  --font-base: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --font-size-xs: 0.6875rem;
+  --font-size-sm: 0.8125rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: clamp(1.75rem, 4.5vmin, 3rem);
+  --font-size-status: clamp(1rem, 2.2vmin, 1.375rem);
+  --font-size-ingredient: clamp(0.8125rem, 2.2vmin, 1.375rem);
+  --icon-size: clamp(2rem, 7vmin, 5rem);
+  --icon-size-lg: clamp(2.75rem, 9vmin, 6rem);
+  --fist-size: clamp(2rem, 9vmin, 6rem);
+  --prop-size: clamp(1rem, 3vmin, 2.4rem);
+  --game-width: 80vw;
+  --game-height: 80vh;
+
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-pill: 999px;
+
+  --dough-size: clamp(5rem, 20vmin, 14rem);
+  --workbench-height: 13rem;
+  --oven-window-height: clamp(6rem, 18vh, 14rem);
+  --particle-size: clamp(0.3rem, 0.9vmin, 0.7rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: var(--font-base);
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+/* 게임 화면 전체를 채우는 배경 그림 (스크롤과 관계없이 고정) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: var(--color-bg) var(--image-background) center / cover no-repeat;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+button:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* 레이아웃 */
+.game {
+  display: flex;
+  flex-direction: column;
+  width: var(--game-width);
+  min-height: var(--game-height);
+  padding-block: var(--space-md);
+}
+
+.game-title {
+  align-self: center;
+  margin: 0;
+  padding: var(--space-xs) var(--space-lg);
+  background: var(--color-label-bg);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-xl);
+  text-align: center;
+}
+
+.game-status {
+  align-self: center;
+  max-width: 100%;
+  padding: var(--space-xs) var(--space-md);
+  background: var(--color-label-bg);
+  border-radius: var(--radius-md);
+  min-height: 2.2em;
+  font-size: var(--font-size-status);
+  margin: var(--space-sm) 0 var(--space-xl);
+  color: var(--color-muted);
+  text-align: center;
+}
+
+.kitchen {
+  display: grid;
+  flex: 1;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.6fr) minmax(0, 1fr);
+  gap: var(--space-sm);
+}
+
+/* 재료 선반 */
+.shelf {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin: 0;
+  padding: var(--space-sm);
+  list-style: none;
+  background: var(--color-shelf);
+  align-self: stretch;
+  border-bottom: 6px solid var(--color-shelf-edge);
+  border-radius: var(--radius-sm);
+}
+
+.shelf li {
+  display: flex;
+  flex: 1;
+}
+
+.ingredient {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  width: 100%;
+  padding: var(--space-sm) var(--space-xs);
+  background: var(--color-card);
+  border: 2px solid var(--color-shelf-edge);
+  border-radius: var(--radius-sm);
+  transition: transform 0.15s ease, opacity 0.3s ease;
+}
+
+.ingredient:hover:not(:disabled) {
+  transform: translateY(-3px);
+}
+
+.ingredient:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.ingredient.is-used {
+  cursor: default;
+  opacity: 0.3;
+}
+
+.ingredient-icon {
+  font-size: var(--icon-size);
+  line-height: 1;
+}
+
+.ingredient-name {
+  font-size: var(--font-size-ingredient);
+  font-weight: 600;
+}
+
+/* 작업대 */
+.center-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.workbench {
+  position: relative;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: var(--workbench-height);
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-wood) 0 2.5rem,
+    var(--color-wood-dark) 2.5rem calc(2.5rem + 2px)
+  );
+  border-bottom: 10px solid var(--color-wood-dark);
+  border-radius: var(--radius-md);
+}
+
+/* 밀가루 산과 가운데 홈 */
+.flour-mound {
+  position: absolute;
+  right: 16%;
+  bottom: 8%;
+  left: 16%;
+  height: 64%;
+  background: radial-gradient(ellipse at 45% 20%, var(--color-flour-light), var(--color-flour) 40%, var(--color-flour-shadow));
+  border-radius: 50% 50% 10% 10% / 100% 100% 10% 10%;
+  box-shadow: 0 4px 0 var(--shadow-soft);
+  transform-origin: 50% 100%;
+}
+
+.flour-well {
+  position: absolute;
+  top: 14%;
+  right: 24%;
+  left: 24%;
+  height: 32%;
+  background: radial-gradient(ellipse at 50% 60%, var(--color-well), var(--color-flour-shadow));
+  border-radius: 50%;
+  box-shadow: inset 0 3px 6px var(--shadow-soft);
+}
+
+.well-item {
+  position: absolute;
+}
+
+.well-milk {
+  top: 18%;
+  right: 26%;
+  left: 26%;
+  height: 25%;
+  background: radial-gradient(ellipse at 40% 35%, var(--color-milk), var(--color-milk-pool));
+  border-radius: 50%;
+}
+
+.well-egg {
+  top: 13%;
+  left: 31%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24%;
+  height: 28%;
+  background: var(--color-egg-white);
+  border-radius: 45% 55% 50% 50% / 50% 50% 50% 50%;
+  box-shadow: 0 1px 3px var(--shadow-soft);
+}
+
+.egg-yolk {
+  width: 46%;
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 35% 35%, var(--color-yolk-light), var(--color-yolk));
+  border-radius: 50%;
+}
+
+.well-butter {
+  top: 17%;
+  right: 30%;
+  width: 16%;
+  height: 18%;
+  background: linear-gradient(var(--color-butter-light), var(--color-butter));
+  border-radius: 0.2rem;
+  box-shadow: 0 2px 0 var(--color-butter-dark);
+}
+
+/* 재료 소품 (밀가루 봉투, 계란, 우유컵) */
+.prop {
+  position: absolute;
+  font-size: var(--prop-size);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.prop-mouth {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 1px;
+}
+
+.prop-flour-bag {
+  top: -1.75em;
+  right: 4%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.2em;
+  height: 4em;
+  background: linear-gradient(var(--color-kraft-dark) 0 18%, var(--color-kraft) 18%);
+  border-radius: 0.3rem 0.3rem 0.5rem 0.5rem;
+  box-shadow: 0 3px 4px var(--shadow-soft);
+}
+
+.prop-label {
+  font-size: 0.45em;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.prop-egg {
+  top: -1.5em;
+  left: calc(50% - 1.1em);
+  width: 2.2em;
+  height: 2.8em;
+}
+
+.egg-shell {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 35% 30%, var(--color-egg-shell-light), var(--color-egg-shell));
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+
+.egg-shell.is-left {
+  clip-path: polygon(0 0, 50% 0, 40% 25%, 58% 45%, 42% 65%, 52% 82%, 48% 100%, 0 100%);
+}
+
+.egg-shell.is-right {
+  clip-path: polygon(50% 0, 100% 0, 100% 100%, 48% 100%, 52% 82%, 42% 65%, 58% 45%, 40% 25%);
+}
+
+.prop-glass {
+  top: -1.75em;
+  left: 60%;
+  width: 2em;
+  height: 2.8em;
+  overflow: hidden;
+  background: var(--color-glass-tint);
+  border: 3px solid var(--color-glass);
+  border-top-width: 0;
+  border-radius: 0 0 0.4rem 0.4rem;
+}
+
+.prop-glass .prop-mouth {
+  left: 0;
+}
+
+.glass-milk {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 80%;
+  background: var(--color-milk);
+  transform-origin: 50% 100%;
+}
+
+/* 쏟아지고 날리는 가루·우유 입자 */
+.particle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  width: var(--particle-size);
+  height: var(--particle-size);
+  margin: calc(var(--particle-size) / -2) 0 0 calc(var(--particle-size) / -2);
+  background: var(--color-flour);
+  border-radius: 50%;
+  box-shadow: 0 0 2px var(--color-flour-shadow);
+  pointer-events: none;
+}
+
+.particle.is-milk {
+  --particle-size: 0.4rem;
+  background: var(--color-milk);
+}
+
+/* 반죽 */
+.dough {
+  position: relative;
+  z-index: 1;
+  width: var(--dough-size);
+  height: calc(var(--dough-size) * 0.7);
+  padding: 0;
+  background: radial-gradient(circle at 35% 30%, var(--color-card), var(--color-dough) 45%, var(--color-dough-shadow));
+  border: 0;
+  border-radius: 48% 52% 45% 55% / 60% 55% 45% 40%;
+  box-shadow: 0 6px 0 var(--color-dough-shadow);
+}
+
+.dough.is-smooth {
+  border-radius: 50% / 55% 55% 45% 45%;
+}
+
+.dough:disabled {
+  cursor: default;
+}
+
+.fist {
+  position: absolute;
+  top: calc(50% - var(--fist-size) / 2);
+  z-index: 2;
+  font-size: var(--fist-size);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.fist-left {
+  left: 2%;
+}
+
+.fist-right {
+  right: 2%;
+}
+
+/* 버튼 */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.5rem;
+  gap: var(--space-xs);
+}
+
+.action-button {
+  padding: var(--space-sm) var(--space-lg);
+  font-weight: 700;
+  color: var(--color-on-primary);
+  background: var(--color-primary);
+  border: 0;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 0 var(--color-primary-dark);
+  animation: appear 0.3s ease-out;
+}
+
+.action-button:hover {
+  background: var(--color-primary-dark);
+}
+
+.knead-count {
+  margin: 0;
+  padding: 0 var(--space-md);
+  background: var(--color-label-bg);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+}
+
+/* 오븐 */
+.oven {
+  width: min(100%, calc(var(--oven-window-height) * 1.8));
+  padding: var(--space-sm);
+  background: var(--color-oven);
+  border-bottom: 8px solid var(--color-oven-dark);
+  border-radius: var(--radius-sm);
+}
+
+.oven-top {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.oven-knob {
+  width: 0.875rem;
+  height: 0.875rem;
+  background: var(--color-shelf);
+  border-radius: 50%;
+}
+
+.oven-window {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--oven-window-height);
+  background: var(--color-oven-window);
+  border: 4px solid var(--color-oven-dark);
+  border-radius: var(--radius-sm);
+  transition: box-shadow 0.5s ease, background 0.5s ease;
+}
+
+.oven.is-baking .oven-window {
+  background: radial-gradient(circle, var(--color-oven-glow), var(--color-oven-window) 75%);
+  box-shadow: inset 0 0 1.5rem var(--color-oven-glow);
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+.oven-content {
+  font-size: var(--icon-size-lg);
+  line-height: 1;
+}
+
+.oven-content.is-dough {
+  width: calc(var(--oven-window-height) * 0.55);
+  height: calc(var(--oven-window-height) * 0.35);
+  background: radial-gradient(circle at 35% 30%, var(--color-card), var(--color-dough) 45%, var(--color-dough-shadow));
+  border-radius: 50% / 55% 55% 45% 45%;
+}
+
+.bake-progress {
+  width: 100%;
+  margin-top: var(--space-sm);
+  accent-color: var(--color-oven-glow);
+}
+
+/* 오븐으로 날아가는 반죽 */
+.flying-item {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.flying-item.is-dough {
+  width: 4rem;
+  height: 2.5rem;
+  background: var(--color-dough);
+  border-radius: 50%;
+}
+
+/* 애니메이션 */
+@keyframes appear {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes glow {
+  from { box-shadow: inset 0 0 1rem var(--color-oven-glow); }
+  to { box-shadow: inset 0 0 2.5rem var(--color-oven-glow); }
+}
+
+/* 완성된 빵: 화면 중앙 40% 크기 + 김 */
+.result {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-inline: var(--space-md);
+  background: var(--color-overlay);
+}
+
+.result-stage {
+  position: relative;
+  width: var(--result-size);
+  max-width: 100%;
+  aspect-ratio: 1;
+}
+
+.result-bread {
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 1.5vmin 2vmin var(--shadow-bread));
+}
+
+.steam {
+  position: absolute;
+  right: 20%;
+  bottom: 84%;
+  left: 20%;
+  display: flex;
+  justify-content: space-between;
+  height: 55%;
+  pointer-events: none;
+}
+
+.steam-wisp {
+  width: 22%;
+  height: 100%;
+  overflow: visible;
+  opacity: 0;
+  filter: blur(0.4vmin);
+}
+
+.steam-wisp path {
+  fill: none;
+  stroke: var(--color-steam);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.result.is-steaming .steam-wisp {
+  animation: steam 2.4s ease-in-out infinite;
+}
+
+.result.is-steaming .steam-wisp:nth-child(2) {
+  animation-delay: 0.8s;
+}
+
+.result.is-steaming .steam-wisp:nth-child(3) {
+  animation-delay: 1.6s;
+}
+
+.result-actions {
+  position: absolute;
+  top: calc(50% + var(--result-size) / 2 + var(--space-lg));
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.result-text {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-on-primary);
+}
+
+@keyframes steam {
+  0% { transform: translateY(25%) scaleX(0.7); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(-35%) scaleX(1.3); opacity: 0; }
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --workbench-height: 16rem;
+  }
+
+  .kitchen {
+    gap: var(--space-lg);
+  }
+
+  .shelf {
+    gap: var(--space-md);
+    padding: var(--space-md);
+  }
+
+  .fist-left {
+    left: 6%;
+  }
+
+  .fist-right {
+    right: 6%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ingredient,
+  .oven-window {
+    transition: none;
+  }
+
+  .action-button,
+  .oven.is-baking .oven-window,
+  .result.is-steaming .steam-wisp {
+    animation: none;
+  }
+
+  .result.is-steaming .steam-wisp {
+    opacity: 0.7;
+  }
+}
+
+[hidden] {
+  display: none;
+}
