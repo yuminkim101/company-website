@@ -10,21 +10,10 @@
   <!-- 네이버 지도 (Client ID는 공개되어도 되는 값. Client Secret은 절대 넣지 않는다) -->
   <script defer src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=i7xerh0otr&amp;submodules=geocoder"></script>
   <script defer src="js/location.js"></script>
+  <script src="js/main.js" defer></script>
 </head>
 <body>
-  <!-- TODO: 헤더·푸터 공통 마크업/스타일 위치가 정해지면 교체 -->
-  <header class="site-header">
-    <div class="container site-header-inner">
-      <a class="site-logo" href="index.html">클래스로</a>
-      <nav aria-label="주 메뉴">
-        <ul class="site-nav">
-          <li><a href="index.html">회사 소개</a></li>
-          <li><a href="service.html">서비스 소개</a></li>
-          <li><a href="location.html" aria-current="page">오시는 길</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <site-header data-current="location"></site-header>
 
   <main>
     <section class="section">
@@ -69,11 +58,6 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p class="site-footer-name">클래스로(Classro)</p>
-      <p class="site-footer-note">이 사이트는 수업용 가상 회사 소개 페이지입니다.</p>
-    </div>
-  </footer>
+  <site-footer></site-footer>
 </body>
 </html>
